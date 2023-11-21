@@ -1,4 +1,8 @@
 function interpretNumber() {
+    var nqimenElement = document.querySelector(".qimen-container");
+    nqimenElement.style.display = "flex";
+
+
     var nothingElement = document.querySelector(".nothing");
     nothingElement.textContent = "";
     // 獲取輸入的六位數字
