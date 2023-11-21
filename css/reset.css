@@ -1,0 +1,272 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.warp{
+    padding-top: 48px;
+    width: 1200px;
+    margin: 0 auto;
+}
+.line{
+    top: 252px;
+    left: 360px;
+    width: 1200px;
+    height: 0px;
+    border: 2px solid #000000;
+    opacity: 1;
+}
+.name{
+    padding-bottom: 22px;
+    margin-bottom: 48px;
+}
+.photo{
+    margin-bottom: 45px; 
+}
+.name{
+    border-bottom: 2px solid #000000;
+}
+.name h1{
+    font-family: 'Andale Mono',Regular;
+    font-size: 80px;
+    width: 288px;    
+    display: block;
+    text-align: left;
+} 
+.container .title{
+    display:flex;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 15px;
+}
+.container .title h2 {
+    font-family:'PingFang TC','蘋方-繁',Medium;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 45px;
+    margin-right: 16px;
+  }
+.container .title span{
+    font-family:'Roboto',Medium;
+    margin: auto 0;
+    color: #A00404;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .list{
+      margin-bottom: 80px;  
+  }
+  .list li{
+    position: relative;
+    margin-bottom: 32px;
+  }
+  .list li p{
+      padding-left: 32px;
+      margin-bottom: 24px;
+  }
+  .list li::before{
+      content: "";  
+      display: block;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      position:absolute;
+      background-color: #96A9C4;
+  }
+  .list li::after{
+    content: "";
+    top:0px;
+    left:8px;
+    height:50px;
+    width:1px;
+    display: block;
+    position:absolute;
+    background-color: #96A9C4;  
+  }
+  .list li:last-child::after{
+    height: 0;
+  }
+  
+  .skillContainer{
+    background: #415165 0% 0% no-repeat padding-box;
+    width:1152px;
+    color: #ffffff;
+    padding: 24px;
+    position:relative;
+    margin-bottom: 79px;
+  }
+  .skillContainer::before{
+      content: "";
+      top:25%;
+      left:-350px;
+      display: block;
+      height: 50%;
+      width: 1920px;
+      background: #96A9C4;
+      position:absolute;
+      z-index: -1;
+  }
+  .skillContainer .title{
+      display: flex;
+      justify-content:center;
+      padding: 8px;
+      width: 980px;
+      border-bottom: 1px solid #FFFFFF;
+      margin-left:  auto;
+      margin-right: auto;
+      margin-bottom: 40px;
+  }
+  .box{
+    padding-left: 30px;
+    display: flex;
+    justify-content:start;
+    width: 216px;
+  }
+  .skillContainer .title h1{
+      font-family: '蘋方-繁',Medium;
+      font-size: 32px;
+  }
+  .skillContainer .title span{
+    margin-left:16px;
+    margin-top: auto;
+    margin-bottom: auto;
+    font-family: 'Roboto','Medium';
+    font-style: 24px;
+  }
+  .skillContainer ul{
+      display: block;
+      margin-left:  auto;
+      margin-right: auto;
+      width: 216px;
+      padding-left: 24px;
+      border-left: #FFFFFF 1px solid;
+  }
+  .skillItem{
+      display: block;
+      width: 192px;
+      margin-bottom: 16px;
+      text-align: left;
+      font: Roboto normal 300 24px/36px Roboto;
+      color: #FFFFFF;
+      opacity: 1;
+  }
+  .footer{
+      padding: 50px;
+    background: #415165 0% 0% no-repeat padding-box;
+  }
+  .experince{
+    
+}
+  .experince .title{
+    display:flex;
+    border-bottom: 1px solid #000000;
+    margin-bottom: 24px;
+}
+
+  .experince .title h2 {
+    font-family:'PingFang TC','蘋方-繁',Medium;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 45px;
+    margin-right: 16px;
+  }
+.experince .title span{
+    font-family:'Roboto',Medium;
+    margin: auto 0;
+    color: #A00404;
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .experinceSkill{
+    margin-left: 20px;
+    padding-left: 24px;
+    border-left: #96A9C4 1px solid;
+  }
+  .experinceSkill li{
+      width: 642px;
+      margin-bottom: 24px;
+  }
+  .experinceSkill h1{
+    font-size: 24px;
+}
+.experinceSkill p{
+  font: normal normal 300 20px/30px PingFang TC;
+  font-size: 20px;
+}
+.experinceSkill img{
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.footer .title{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #FFFFFF;
+    width:1200px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    color: #FFFFFF;
+    margin-bottom: 32px;
+}
+.footer .title h1{
+   font-size: 32px;
+}
+.footer .title span{
+    margin-left: 16px;
+    font-size: 24px;
+}
+.footer ul{
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    color: #FFFFFF;
+}
+.footer li{
+    margin-bottom: 16px;
+    font-size: 24px;
+}
