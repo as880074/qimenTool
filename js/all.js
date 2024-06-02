@@ -1,54 +1,66 @@
-function interpretNumber() {
-    var nqimenElement = document.querySelector(".qimen-container");
+function interpretNumber () {
+    var nqimenElement = document.querySelector (".qimen-container");
     nqimenElement.style.display = "flex";
 
 
-    var nothingElement = document.querySelector(".nothing");
+    var nothingElement = document.querySelector (".nothing");
     nothingElement.textContent = "";
     // 獲取輸入的六位數字
-    var userInput = document.getElementById("userInput").value;
+    var userInput = document.getElementById ("userInput").value;
 
     // 確保輸入為六位數
     if (userInput.length === 6) {
 
         for (var i = 0; i < 6; i++) {
-            var digit = parseInt(englishToNumber(userInput[i]));
+            var digit = parseInt (englishToNumber (userInput [i]));
             switch (i) {
                 case 0:
-                    var positionElement = document.querySelector(".position");
-                    positionElement.textContent = interpretDigit(digit);
+                    var positionElement = document.querySelector (".position");
+                    positionElement.textContent = interpretDigit (digit);
                     break;
                 case 1:
-                    var shenElement = document.querySelector(".shen");
-                    shenElement.textContent = interpretShen(digit,userInput,i);
+                    var shenElement = document.querySelector (".shen");
+                    const shenElementValue = interpretShen(digit, userInput, i);
+                    shenElement.textContent = shenElementValue;
+                    updateShenElementStyle(shenElement, shenElementValue);
                     break;
                 case 2:
-                    var xingElement = document.querySelector(".xing");
-                    xingElement.textContent = interpretFourStars(digit);
+                    var xingElement = document.querySelector (".xing");
+                    xingElement.textContent = interpretFourStars (digit);
                     break;
                 case 3:
-                    var menElement = document.querySelector(".men");
-                    menElement.textContent = interpretEightGates(digit);
+                    var menElement = document.querySelector (".men");
+                    menElement.textContent = interpretEightGates (digit);
                     break;
                 case 4:
-                    var tianElement = document.querySelector(".tian-gan");
-                    tianElement.textContent = interpretHeavenlyStems(digit);
+                    var tianElement = document.querySelector (".tian-gan");
+                    tianElement.textContent = interpretHeavenlyStems (digit);
                     break;
                 case 5:
-                    var diElement = document.querySelector(".di-gan");
-                    diElement.textContent = interpretHeavenlyStems(digit);
+                    var diElement = document.querySelector (".di-gan");
+                    diElement.textContent = interpretHeavenlyStems (digit);
                     break;
             }
         }
 
         
     } else {
-        alert("請輸入正確的六位數字！");
+        alert ("請輸入正確的六位數字！");
     }
 }
 
+function updateShenElementStyle(element, value) {
+    const blackList = ["值符", "太陰", "六合", "九地", "九天"];
+    const redList = ["白虎", "玄武"];
+    
+    if (blackList.includes(value)) {
+        element.style.color = "black";
+    } else if (redList.includes(value)) {
+        element.style.color = "red";
+    }
+}
 // 解讀單個數字
-function interpretDigit(digit) {
+function interpretDigit (digit) {
     switch (digit) {
         case 1:
             return "坎";
@@ -74,7 +86,7 @@ function interpretDigit(digit) {
 }
 
 
-function interpretShen(number,userInput,i) {
+function interpretShen (number,userInput,i) {
     switch (number) {
         case 1:
             return "值符";
@@ -95,14 +107,14 @@ function interpretShen(number,userInput,i) {
         case 9:
             return "值符";
         case 0:
-            return interpretShen(parseInt(englishToNumber(userInput[i-1])),userInput,i-1);
+            return interpretShen (parseInt (englishToNumber (userInput [i-1])),userInput,i-1);
         default:
             return "未知";
     }
 }
 
 // 第三個數字是四星的規則
-function interpretFourStars(number) {
+function interpretFourStars (number) {
     switch (number) {
         case 1:
             return "天蓬";
@@ -130,7 +142,7 @@ function interpretFourStars(number) {
 }
 
 // 第四個數字是八門的規則
-function interpretEightGates(number) {
+function interpretEightGates (number) {
     switch (number) {
         case 1:
             return "休";
@@ -158,7 +170,7 @@ function interpretEightGates(number) {
 }
 
 // 第五個數字是天干的規則
-function interpretHeavenlyStems(number) {
+function interpretHeavenlyStems (number) {
     switch (number) {
         case 1:
             return "甲";
@@ -179,21 +191,21 @@ function interpretHeavenlyStems(number) {
         case 9:
             return "壬";
         case 0:
-            var nothingElement = document.querySelector(".nothing");
+            var nothingElement = document.querySelector (".nothing");
             nothingElement.textContent = "空";
             return "";
         default:
             return "";
     }
 }
-function englishToNumber(char) {
+function englishToNumber (char) {
     // 如果输入是数字，则直接返回该数字
-    if (!isNaN(char)) {
-        return parseInt(char);
+    if (!isNaN (char)) {
+        return parseInt (char);
     }
 
     // 将输入字符转为小写，以匹配时不区分大小写
-    var lowerCaseChar = char.toLowerCase();
+    var lowerCaseChar = char.toLowerCase ();
 
     // 定义映射关系
     var mapping = {
@@ -209,5 +221,5 @@ function englishToNumber(char) {
     };
 
     // 返回对应的映射值，如果没有匹配到则返回 undefined
-    return mapping[lowerCaseChar];
+    return mapping [lowerCaseChar];
 }

@@ -1,5 +1,26 @@
+/* 初始时隐藏，带有背景图 */
 
 
+
+body {
+    font-family: 'PingFang TC', '蘋方-繁', Medium;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
 .qimen-container {
     display: none;
     flex-direction: column;
