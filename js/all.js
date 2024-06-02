@@ -51,7 +51,7 @@ function interpretNumber () {
 
 function updateShenElementStyle(element, value) {
     const blackList = ["值符", "太陰", "六合", "九地", "九天"];
-    const redList = ["白虎", "玄武"];
+    const redList = ["白虎", "玄武", "騰蛇"];
     
     if (blackList.includes(value)) {
         element.style.color = "black";
