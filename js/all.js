@@ -26,11 +26,15 @@ function interpretNumber () {
                     break;
                 case 2:
                     var xingElement = document.querySelector (".xing");
-                    xingElement.textContent = interpretFourStars (digit);
+                    const xingElementValue = interpretFourStars(digit);
+                    xingElement.textContent = xingElementValue;
+                    updateFourStarsElementStyle(xingElement, xingElementValue);
                     break;
                 case 3:
                     var menElement = document.querySelector (".men");
-                    menElement.textContent = interpretEightGates (digit);
+                    const menElementValue = interpretEightGates(digit);
+                    menElement.textContent = menElementValue;
+                    updateEightGatesElementStyle(menElement, menElementValue);
                     break;
                 case 4:
                     var tianElement = document.querySelector (".tian-gan");
@@ -49,154 +53,86 @@ function interpretNumber () {
     }
 }
 
-function updateShenElementStyle(element, value) {
-    const blackList = ["值符", "太陰", "六合", "九地", "九天"];
-    const redList = ["白虎", "玄武", "騰蛇"];
-    
+function updateElementStyle(element, value, blackList, redList) {
     if (blackList.includes(value)) {
         element.style.color = "black";
     } else if (redList.includes(value)) {
         element.style.color = "red";
     }
 }
-// 解讀單個數字
+
+//判斷八門吉凶，紅色為凶，黑色為吉
+function updateEightGatesElementStyle(element, value) {
+    const blackList = ["生", "景", "開", "休"];
+    const redList = ["死", "傷", "驚","杜"];
+    updateElementStyle(element, value, blackList, redList);
+}
+
+//判斷九星吉凶，紅色為凶，黑色為吉
+function updateFourStarsElementStyle(element, value) {
+    const fourStarsBlackList = ["輔", "心", "任", "英"];
+    const fourStarsRedList = ["蓬", "沖", "芮", "柱"];
+    updateElementStyle(element, value, fourStarsBlackList, fourStarsRedList);
+}
+
+//判斷神煞吉凶，紅色為凶，黑色為吉
+function updateShenElementStyle(element, value) {
+    const shenBlackList = ["值符", "太陰", "六合", "九地", "九天"];
+    const shenRedList = ["白虎", "玄武", "騰蛇"];
+    updateElementStyle(element, value, shenBlackList, shenRedList);
+}
+
+//九宮對應
 function interpretDigit (digit) {
-    switch (digit) {
-        case 1:
-            return "坎";
-        case 2:
-            return "坤";
-        case 3:
-            return "震";
-        case 4:
-            return "巽";
-        case 5:
-            return "坤";
-        case 6:
-            return "乾";
-        case 7:
-            return "兌";
-        case 8:
-            return "艮";
-        case 9:
-            return "離";
-        case 0:
-            return "坤";
-    }
+    const mapping = ["坤", "坎", "坤", "震", "巽", "坤", "乾", "兌", "艮", "離"];
+    return mapping[digit];
 }
 
 
-function interpretShen (number,userInput,i) {
-    switch (number) {
-        case 1:
-            return "值符";
-        case 2:
-            return "騰蛇";
-        case 3:
-            return "太陰";
-        case 4:
-            return "六合";
-        case 5:
-            return "白虎";
-        case 6:
-            return "玄武";
-        case 7:
-            return "九地";
-        case 8:
-            return "九天";
-        case 9:
-            return "值符";
-        case 0:
-            return interpretShen (parseInt (englishToNumber (userInput [i-1])),userInput,i-1);
-        default:
-            return "未知";
+function interpretShen(number, userInput, i) {
+    const shenMapping = {
+        1: "值符",
+        2: "騰蛇",
+        3: "太陰",
+        4: "六合",
+        5: "白虎",
+        6: "玄武",
+        7: "九地",
+        8: "九天",
+        9: "值符",
+    };
+
+    if (shenMapping.hasOwnProperty(number)) {
+        return shenMapping[number];
+    } else if (number === 0) {
+        const previousDigit = parseInt(englishToNumber(userInput[i - 1]));
+        return interpretShen(previousDigit, userInput, i - 1);
+    } else {
+        return "未知";
     }
 }
 
 // 第三個數字是四星的規則
 function interpretFourStars (number) {
-    switch (number) {
-        case 1:
-            return "天蓬";
-        case 2:
-            return "天芮";
-        case 3:
-            return "天沖";
-        case 4:
-            return "天輔";
-        case 5:
-            return "天芮";
-        case 6:
-            return "天心";
-        case 7:
-            return "天柱";
-        case 8:
-            return "天任";
-        case 9:
-            return "天英";
-        case 0:
-            return "天芮";
-        default:
-            return "未知";
-    }
+    const mapping = ["芮", "蓬", "芮", "沖", "輔", "芮", "心", "柱", "任", "英"];
+    return mapping[number];
 }
 
 // 第四個數字是八門的規則
 function interpretEightGates (number) {
-    switch (number) {
-        case 1:
-            return "休";
-        case 2:
-            return "死";
-        case 3:
-            return "傷";
-        case 4:
-            return "杜";
-        case 5:
-            return "死";
-        case 6:
-            return "開";
-        case 7:
-            return "驚";
-        case 8:
-            return "生";
-        case 9:
-            return "景";
-        case 0:
-            return "死";
-        default:
-            return "未知";
-    }
+    const mapping = ["死", "休", "死", "傷", "杜", "死", "開", "驚", "生", "景"];
+    return mapping[number];
 }
 
 // 第五個數字是天干的規則
 function interpretHeavenlyStems (number) {
-    switch (number) {
-        case 1:
-            return "甲";
-        case 2:
-            return "乙";
-        case 3:
-            return "丙";
-        case 4:
-            return "丁";
-        case 5:
-            return "戊";
-        case 6:
-            return "己";
-        case 7:
-            return "庚";
-        case 8:
-            return "辛";
-        case 9:
-            return "壬";
-        case 0:
-            var nothingElement = document.querySelector (".nothing");
-            nothingElement.textContent = "空";
-            return "";
-        default:
-            return "";
+    const mapping = ["", "甲", "乙", "丙", "丁", "戊", "己", "庚", "辛", "壬"];
+    if (number === 0) {
+        const nothingElement = document.querySelector(".nothing");
+        nothingElement.textContent = "空";
+        return "";
     }
+    return mapping[number];
 }
 function englishToNumber (char) {
     // 如果输入是数字，则直接返回该数字
